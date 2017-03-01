@@ -75,6 +75,7 @@ class ProjectController extends Controller
                             ->join('user_task','tasks.id','user_task.task_id')
                             ->join('users','users.id','user_task.user_id')
                             ->select('projects.*','pic.name as pic_name','users.name as user_list')
+                            ->groupBy('projects.id')
                             ->get();
         $project_name = $project->groupBy('name')->keys();
         

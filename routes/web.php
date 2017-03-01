@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-// Auth::loginUsingId(3);
+Auth::loginUsingId(3);
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,7 +24,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::get('/test',function() {
-	
+	return Auth::user()->id;
 });
 
 

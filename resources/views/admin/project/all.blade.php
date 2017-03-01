@@ -12,13 +12,17 @@
 					<th>No.</th>
 					<th>Project Name</th>
 					<th>PIC</th>
+					<th width="10%">#</th>
 				</thead>
 				<tbody>
 				@foreach($project as $key => $value)
 					<tr>
 						<td>{{ $key+1 }}</td>
 						<td>{{ $value->name }}</td>
-						<td>{{ $value->user_name }}</td>
+						<td>{{ $value->pic_name }}</td>
+						@if($value->pic == Auth::user()->id)
+						<td><input type="submit" class="waves-effect waves-light btn blue m-b-xs" value="Edit"></td>
+						@endif
 					</tr>
 				@endforeach
 				</tbody>

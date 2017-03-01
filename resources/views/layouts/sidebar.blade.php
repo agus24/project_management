@@ -14,7 +14,7 @@
             <i class="material-icons">list</i>Project List<i class="nav-drop-icon material-icons">keyboard_arrow_right</i></a>
         <div class="collapsible-body">
             <ul>
-                <li><a href="{{ url('project/all') }}">Show All Project</a></li>
+                <li><a href="{{ url('project/') }}">Show All Project</a></li>
                 @foreach(Auth::user()->filterProject()->get() as $projects)
                 <li><a href="{{ url('project/'.$projects->id) }}">{{ $projects->name }}</a></li>
 
