@@ -4,10 +4,11 @@
 <div class="row">
 	<div class="col s12">
     	<div class="card">
-    		<div class="card-title">
-    			{{ $project->name }}
-    		</div>
     		<div class="card-content">
+	    		<span class="card-title">
+	    			<h4>{{ $project->name }}</h4>
+	    			<hr/>
+	    		</span>
     			<p>{{ $project->description }}</p>
     		</div>
     	</div>
@@ -16,10 +17,11 @@
 <div class="row">
 	<div class="col s12">
 		<div class="card">
-			<div class="card-title">
-				{{ $task->name }}
-			</div>
 			<div class="card-content">
+				<span class="card-title">
+					<h4>{{ $task->name }}</h4>
+					<hr/>
+				</span>
 				<table class="table bordered stripped">
 					<tr>
 						<td>

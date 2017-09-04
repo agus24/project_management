@@ -549,6 +549,7 @@ return array(
     'SebastianBergmann\\ResourceOperations\\ResourceOperations' => $vendorDir . '/sebastian/resource-operations/src/ResourceOperations.php',
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/src/Template.php',
+    'TruncateAll' => $baseDir . '/database/seeds/TruncateAll.php',
     'project_seeder' => $baseDir . '/database/seeds/project_seeder.php',
     'task_seeder' => $baseDir . '/database/seeds/task_seeder.php',
     'user_seeder' => $baseDir . '/database/seeds/user_seeder.php',

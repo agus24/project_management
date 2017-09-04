@@ -4,11 +4,12 @@
 <div class="row">
 	<div class="col s12">
     	<div class="card">
-    		<div class="card-title">
-    			<b>{{ $project->name }}</b><br>
-    			Add New Task
-    		</div>
-    		<div class="card-content">
+            <div class="card-content">
+                <span class="card-title">
+        			<h4>{{ $project->name }}</h4>
+                    <p>Add New Task</p>
+                    <hr/>
+                </span>
     			<form action={{ url('project/')."/".$project->id }} method="POST">
     				{{ csrf_field() }}
     				<div class="row">

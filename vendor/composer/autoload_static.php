@@ -815,6 +815,7 @@ class ComposerStaticInit0848126c6182d994f3ca1fb504551845
         'SebastianBergmann\\ResourceOperations\\ResourceOperations' => __DIR__ . '/..' . '/sebastian/resource-operations/src/ResourceOperations.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/src/Template.php',
+        'TruncateAll' => __DIR__ . '/../..' . '/database/seeds/TruncateAll.php',
         'project_seeder' => __DIR__ . '/../..' . '/database/seeds/project_seeder.php',
         'task_seeder' => __DIR__ . '/../..' . '/database/seeds/task_seeder.php',
         'user_seeder' => __DIR__ . '/../..' . '/database/seeds/user_seeder.php',
