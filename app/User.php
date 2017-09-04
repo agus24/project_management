@@ -52,9 +52,8 @@ class User extends Authenticatable
                     ->groupBy('projects.id')
                     ->where('users.id',$this->id)
                     ->orwhere('projects.pic',$this->id)
-                    ->where('projects.deleted_at',Null)
                     ;
     }
 
-    
+
 }

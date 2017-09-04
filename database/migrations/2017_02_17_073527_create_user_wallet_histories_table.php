@@ -21,8 +21,6 @@ class CreateUserWalletHistoriesTable extends Migration
             $table->integer('type');
             $table->longText('description')->nullable();
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

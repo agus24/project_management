@@ -19,8 +19,6 @@ class CreateProjectsTable extends Migration
             $table->integer('pic')->unsigned();
             $table->longText('description')->nullable();
             $table->timestamps();
-
-            $table->foreign('pic')->references('id')->on('users');
         });
     }
 
@@ -34,7 +32,7 @@ class CreateProjectsTable extends Migration
         Schema::table('projects',function(Blueprint $table){
             $table->dropForeign('projects_pic_foreign');
         });
-        
+
         Schema::dropIfExists('projects');
     }
 }

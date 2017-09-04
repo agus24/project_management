@@ -18,8 +18,6 @@ class CreateUserWalletTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('poin');
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

@@ -19,8 +19,6 @@ class CreateProjectNewsTable extends Migration
             $table->date('date');
             $table->longText('news');
             $table->timestamps();
-
-            $table->foreign('project_id')->references('id')->on('projects');
         });
     }
 

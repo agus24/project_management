@@ -31,4 +31,9 @@ class Task extends Model
 				    ->select('tasks.*','b.text as type_task_name','c.text as priority_name')
 				    ;
     }
+
+    public function findByProject($id)
+    {
+        return $this->where('project_id',$id);
+    }
 }

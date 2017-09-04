@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\model\Project;
+use App\model\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -78,7 +79,7 @@ class ProjectController extends Controller
                             ->groupBy('projects.id')
                             ->get();
         $project_name = $project->groupBy('name')->keys();
-        
+
         return view('admin.project.all',["project" => $project,"project_name"=>$project_name]);
     }
 
@@ -109,8 +110,8 @@ class ProjectController extends Controller
 
     public function destroy($id)
     {
-        Project::destroy($id);
-
+        Project::find($id)->delete();
+        $task = (new Task)->findByProject($id)->delete();
         return redirect('home');
     }
 }

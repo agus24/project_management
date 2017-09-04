@@ -26,10 +26,6 @@ class CreateTasksTable extends Migration
             $table->integer('type_task');
             $table->timestamps();
         });
-
-        Schema::table('tasks', function(Blueprint $table){
-            $table->foreign('project_id')->references('id')->on('projects');
-        });
     }
 
     /**

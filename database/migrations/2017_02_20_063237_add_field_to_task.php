@@ -13,9 +13,7 @@ class AddFieldToTask extends Migration
      */
     public function up()
     {
-        Schema::table('tasks', function(Blueprint $table){
-            $table->date('done_date')->default("0000-00-00");
-        });
+        //
     }
 
     /**
@@ -25,8 +23,6 @@ class AddFieldToTask extends Migration
      */
     public function down()
     {
-        Schema::table('tasks', function(Blueprint $table){
-            $table->dropColumn('done_date');
-        });
+        //
     }
 }
