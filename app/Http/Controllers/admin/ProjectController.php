@@ -111,7 +111,7 @@ class ProjectController extends Controller
     public function destroy($id)
     {
         Project::find($id)->delete();
-        $task = (new Task)->findByProject($id)->delete();
+        $task = (new Task)->deleteByProject($id);
         return redirect('home');
     }
 }

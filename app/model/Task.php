@@ -3,6 +3,7 @@
 namespace App\model;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Task extends Model
 {
@@ -32,8 +33,11 @@ class Task extends Model
 				    ;
     }
 
-    public function findByProject($id)
+    public function deleteByProject($id)
     {
-        return $this->where('project_id',$id);
+        $data = $this->where('project_id',$id);
+        $task_id = $data->get()->map(function($value,$key) { return $value->id; });
+        DB::table('user_task')->wherein('task_id',$task_id)->delete();
+        $data->delete();
     }
 }
