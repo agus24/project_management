@@ -4,18 +4,17 @@
 <div class="row">
 	<div class="col s12">
     	<div class="card">
-    		<div class="card-title" style="margin-left:1px">
-    			<b style="font-size:30px">{{ $project->name }}</b>
-            </div>
             <div class="card-content">
-                <p>{{ $project->description }}</p>
-            </div>
-            <div>
+        		<span class="card-title">
+        			<h4>{{ $project->name }}</h4>
+                    <hr/>
+                    <p>{{ $project->description }}</p>
+                </span>
                 <form method="POST" id="form" action="{{ url('project/'.$project->id."/delete") }}">
                     {{ method_field('DELETE') }}
                     {{ csrf_field() }}
-                    <a href="{{ url('project/'.$project->id."/edit") }}"><i class="material-icons small">mode_edit</i></a>
-                    <a href="javascript:document.getElementById('form').submit()"><i class="material-icons small">delete</i></a>
+                    <a href="{{ url('project/'.$project->id."/edit") }}" class="btn blue">Edit</a>
+                    <a href="javascript:document.getElementById('form').submit()" class="btn red">Delete</a>
                 </form>
             </div>
     	</div>
@@ -59,11 +58,15 @@
                             <td>{{ $task->description }}</td>
                             <td>{{ $task->status == 1 ? "Done" : "Not Yet Done" }}</td>
                             <td>
-        						<a class="btn-floating btn-medium waves-effect waves-light green" href="{{ url('project/'.$project->id.'/task')."/".$task->id }}"><i class="material-icons">search</i></a>
-        						@if(Auth::user()->id == $project->pic)
-        						<a class="waves-effect waves-light btn teal"> Edit</a>
-        						<a class="waves-effect waves-light btn red"> Delete</a>
-        						@endif
+                                <form id="delForm" action="{{ url('project/'.$project->id.'/task')."/".$task->id."/delete" }}" method="POST">
+                                <a class="btn-floating btn-medium waves-effect waves-light green" href="{{ url('project/'.$project->id.'/task')."/".$task->id }}"><i class="material-icons">search</i></a>
+                                @if(Auth::user()->id == $project->pic)
+                                <a class="waves-effect waves-light btn teal" href="{{ url('project/'.$project->id.'/task')."/".$task->id."/edit" }}"> Edit</a>
+                                {{ csrf_field() }}
+                                {{ method_field('delete') }}
+        						<button class="waves-effect waves-light btn red"> Delete</button>
+                                @endif
+                                </form>
         					</td>
         				</tr>
             			@endforeach

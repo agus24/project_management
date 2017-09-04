@@ -5,10 +5,11 @@
 <div class="row">
 	<div class="col s12">
 		<div class="card">
-			<div class="card-title">
-				Edit
-			</div>
 			<div class="card-content">
+				<span class="card-title">
+					<h4>Edit</h4>
+					<hr/>
+				</span>
 				<form method="POST" action="{{ url('project/'.$project->id) }}">
 					{{ method_field('PATCH') }}
 					{{ csrf_field() }}

@@ -41,6 +41,9 @@ Route::group(['middleware' => 'auth','namespace' => 'admin'], function () {
 	Route::get('project/{project_id}/addTask', 'TaskController@add');
 	Route::post('project/{project_id}','TaskController@insert');
 	Route::get('project/{project_id}/task/{task_id}','TaskController@show');
+	Route::get('project/{project_id}/task/{task_id}/edit','TaskController@edit');
+	Route::patch('project/{project_id}/task/{task_id}','TaskController@update');
+	Route::delete('project/{project_id}/task/{task_id}/delete','TaskController@delete');
 });
 
 Route::put('changePassword', 'HomeController@chpass')->middleware('auth');

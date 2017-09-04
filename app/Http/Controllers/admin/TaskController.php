@@ -69,11 +69,8 @@ class TaskController extends Controller
     public function show($project_id,$task_id)
     {
         $project = Project::findOrFail($project_id);
-
         $task = Task::findOrFail($task_id);
-
         $user = $task->users()->get();
-
         $priority_name = DB::table('utl_data')->where('name',DB::raw("'priority'"))->where('value',$task->priority)->get()[0]->text;
         $type_task_name = DB::table('utl_data')->where('name',DB::raw("'type_task'"))->where('value',$task->type_task)->get()[0]->text;
 
@@ -84,5 +81,59 @@ class TaskController extends Controller
                                         "type_task_name" => $type_task_name,
                                         "users" => $user,
                                         ]);
+    }
+
+    public function edit($project_id,$task_id)
+    {
+        $project = Project::findOrFail($project_id);
+        $task = Task::findOrFail($task_id);
+        $user = $task->users()->get();
+        $priority = (new utl_data)->where('name','priority')->get();
+        $type_task = (new utl_data)->where('name','type_task')->get();
+        $priority_name = DB::table('utl_data')->where('name',DB::raw("'priority'"))->where('value',$task->priority)->get()[0]->text;
+        $type_task_name = DB::table('utl_data')->where('name',DB::raw("'type_task'"))->where('value',$task->type_task)->get()[0]->text;
+        return view('admin.task.edit',
+            [
+                "project" => $project,
+                "task" => $task,
+                "priority_name"  => $priority_name,
+                "type_task_name" => $type_task_name,
+                "users" => $user,
+                "priority"=>$priority,
+                "type_task"=>$type_task
+            ]);
+    }
+
+    public function update(Request $request,$project_id,$task_id)
+    {
+        $this->validate($request,$this->validator);
+
+        $task = Task::findOrFail($task_id);
+        $task->name = $request->input('name');
+        $task->start_date = $request->input('start_date');
+        $task->end_date = $request->input('end_date');
+        $task->priority = $request->input('priority');
+        $task->type_task = $request->input('type_task');
+        $task->poin = $request->input('poin');
+        $task->description = $request->input('description');
+        $task->save();
+
+        $user_task = UserTask::where('task_id',$task_id);
+        $user_task->delete();
+        foreach($request->input('user') as $user)
+        {
+            $user_task->insert([
+                "user_id" => $user,
+                "task_id" => $task_id
+            ]);
+        }
+        return redirect('project/'.$project_id);
+    }
+
+    public function delete($project_id,$task_id)
+    {
+        Task::findOrFail($task_id)->delete();
+        UserTask::where('task_id',$task_id)->delete();
+        return redirect('project/'.$project_id);
     }
 }
